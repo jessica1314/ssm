@@ -23,7 +23,7 @@ import java.util.UUID;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+//@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class MybatisTest {
 
     @Autowired
@@ -43,14 +43,14 @@ public class MybatisTest {
         List<Emp> depts = empMapper.selectByExampleWithDept(null);
         System.out.println(depts);
         /*批量新增雇员*/
-//        long start = System.currentTimeMillis();
-//        for (int i = 0; i < 1000; i++) {
-//            String uid = UUID.randomUUID().toString().substring(0, 5);
-//            empMapper = sqlSessionTemplate.getMapper(EmpMapper.class);
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            String uid = UUID.randomUUID().toString().substring(0, 5);
+            empMapper = sqlSessionTemplate.getMapper(EmpMapper.class);
 //            empMapper.insertSelective(new Emp(null, uid + "号雇员", "1", uid + i + "@qq.com", 1, null));
-//        }
-//        long end = System.currentTimeMillis();
-//        System.out.println((end - start) + "毫秒");
+        }
+        long end = System.currentTimeMillis();
+        System.out.println((end - start) + "毫秒");
     }
 
 }
